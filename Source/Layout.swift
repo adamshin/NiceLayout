@@ -16,7 +16,7 @@ public enum LayoutRelation {
 
 public enum LayoutSuperviewTarget {
     case `super`
-    case safeArea
     case margins
     case readableContent
+    @available(iOS 11.0, *) case safeArea
 }

@@ -136,14 +136,19 @@ where AnchorType == LayoutCompositeSizeAnchor {
 private func constrainable(for view: UIView, target: LayoutSuperviewTarget)
 -> LayoutConstrainable {
     
-    guard let sv = view.superview else {
+    guard let superview = view.superview else {
         fatalError("Attempting to add constraint to nil superview")
     }
     
     switch target {
-    case .super: return sv
-    case .safeArea: return sv.safeAreaLayoutGuide
-    case .margins: return sv.layoutMarginsGuide
-    case .readableContent: return sv.readableContentGuide
+    case .super:
+        return superview
+    case .margins:
+        return superview.layoutMarginsGuide
+    case .readableContent:
+        return superview.readableContentGuide
+    case .safeArea:
+        guard #available(iOS 11.0, *) else { fatalError() }
+        return superview.safeAreaLayoutGuide
     }
 }

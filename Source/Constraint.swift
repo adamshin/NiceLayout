@@ -17,7 +17,7 @@ public protocol LayoutConstraint {
 extension LayoutConstraint {
     
     public var constraint: NSLayoutConstraint {
-        rawConstraint.systemConstraint
+        return rawConstraint.systemConstraint
     }
     
     @discardableResult

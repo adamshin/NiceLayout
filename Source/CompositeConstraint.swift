@@ -17,7 +17,7 @@ public protocol LayoutCompositeConstraint {
 extension LayoutCompositeConstraint {
     
     public var constraints: [NSLayoutConstraint] {
-        rawConstraints.map { $0.systemConstraint }
+        return rawConstraints.map { $0.systemConstraint }
     }
     
     @discardableResult
