@@ -16,10 +16,7 @@
 		23312A1B245CA24200701BF9 /* RawConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23312A14245CA24200701BF9 /* RawConstraint.swift */; };
 		23312A26245CA24900701BF9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23312A1D245CA24900701BF9 /* MainViewController.swift */; };
 		23312A28245CA24900701BF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23312A1F245CA24900701BF9 /* LaunchScreen.storyboard */; };
-		23312A29245CA24900701BF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23312A21245CA24900701BF9 /* Main.storyboard */; };
-		23312A2A245CA24900701BF9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23312A22245CA24900701BF9 /* Default-568h@2x.png */; };
 		23312A2B245CA24900701BF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23312A23245CA24900701BF9 /* AppDelegate.swift */; };
-		23312A2D245CA24900701BF9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23312A25245CA24900701BF9 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,11 +29,8 @@
 		23312A14245CA24200701BF9 /* RawConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawConstraint.swift; sourceTree = "<group>"; };
 		23312A1D245CA24900701BF9 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		23312A20245CA24900701BF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		23312A21245CA24900701BF9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		23312A22245CA24900701BF9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		23312A23245CA24900701BF9 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23312A24245CA24900701BF9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		23312A25245CA24900701BF9 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		235BB320240C573F00518A60 /* NiceLayout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NiceLayout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -68,13 +62,10 @@
 		23312A1C245CA24900701BF9 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				23312A23245CA24900701BF9 /* AppDelegate.swift */,
 				23312A1D245CA24900701BF9 /* MainViewController.swift */,
 				23312A1F245CA24900701BF9 /* LaunchScreen.storyboard */,
-				23312A21245CA24900701BF9 /* Main.storyboard */,
-				23312A22245CA24900701BF9 /* Default-568h@2x.png */,
-				23312A23245CA24900701BF9 /* AppDelegate.swift */,
 				23312A24245CA24900701BF9 /* Info.plist */,
-				23312A25245CA24900701BF9 /* SceneDelegate.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -154,8 +145,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23312A29245CA24900701BF9 /* Main.storyboard in Resources */,
-				23312A2A245CA24900701BF9 /* Default-568h@2x.png in Resources */,
 				23312A28245CA24900701BF9 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -172,7 +161,6 @@
 				23312A16245CA24200701BF9 /* PartialConstraint.swift in Sources */,
 				23312A2B245CA24900701BF9 /* AppDelegate.swift in Sources */,
 				23312A15245CA24200701BF9 /* Anchor.swift in Sources */,
-				23312A2D245CA24900701BF9 /* SceneDelegate.swift in Sources */,
 				23312A1A245CA24200701BF9 /* Constrainable.swift in Sources */,
 				23312A19245CA24200701BF9 /* Constraint.swift in Sources */,
 				23312A17245CA24200701BF9 /* Layout.swift in Sources */,
