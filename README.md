@@ -4,18 +4,18 @@ NiceLayout provides a concise fluent interface for setting up Auto Layout constr
 
 ```swift
 // Before
-view.addSubview(button)
+myView.addSubview(button)
 button.translatesAutoresizingMaskIntoConstraints = false
 NSLayoutConstraint.activate([
-    button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-    button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+    button.leadingAnchor.constraint(equalTo: myView.leadingAnchor, constant: 16),
+    button.trailingAnchor.constraint(equalTo: myView.trailingAnchor, constant: -16),
     button.topAnchor.constraint(equalTo: label.bottomAnchor),
     button.heightAnchor.constraint(equalToConstant: 44)
 ])
 
 // After
-view.addSubview(button)
-button.pin(.hEdges).to(view).inset(16)
+myView.addSubview(button)
+button.pin(.hEdges).to(.super).inset(16)
 button.pin(.top).to(label, .bottom)
 button.pin(.height).to(44)
 ```
@@ -26,9 +26,9 @@ button.pin(.height).to(44)
 The expression for adding a constraint takes the basic form of `view.pin(...).to(...)`. 
 
 ```swift
-view1.pin(.width).to(120)
-
 view1.pin(.leading).to(view2, .trailing)
+
+view1.pin(.width).to(120)
 ```
 
 When the same anchor is used for both views, it can be omitted in the `to(...)` call.

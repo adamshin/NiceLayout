@@ -10,19 +10,19 @@ import UIKit
 
 // MARK: - Partial Constraint
 
-class PartialLayoutConstraint
+public class PartialLayoutConstraint
 <ItemType: LayoutConstrainable, AnchorType: LayoutAnchor> {
     
     let item: ItemType
     let anchor: AnchorType
     
-    init(item: ItemType, anchor: AnchorType) {
+    internal init(item: ItemType, anchor: AnchorType) {
         self.item = item
         self.anchor = anchor
     }
     
     @discardableResult
-    func to(_ c: LayoutConstrainable, _ a: AnchorType)
+    public func to(_ c: LayoutConstrainable, _ a: AnchorType)
     -> ItemToItemLayoutConstraint<AnchorType> {
         
         return ItemToItemLayoutConstraint(
@@ -31,7 +31,7 @@ class PartialLayoutConstraint
     }
     
     @discardableResult
-    func to(_ c: LayoutConstrainable)
+    public func to(_ c: LayoutConstrainable)
     -> ItemToItemLayoutConstraint<AnchorType> {
         
         return to(c, anchor)
@@ -43,7 +43,7 @@ extension PartialLayoutConstraint
 where ItemType: UIView {
     
     @discardableResult
-    func to(_ target: LayoutSuperviewTarget, _ a: AnchorType)
+    public func to(_ target: LayoutSuperviewTarget, _ a: AnchorType)
     -> ItemToItemLayoutConstraint<AnchorType> {
         
         let c = constrainable(for: item, target: target)
@@ -51,7 +51,7 @@ where ItemType: UIView {
     }
     
     @discardableResult
-    func to(_ target: LayoutSuperviewTarget)
+    public func to(_ target: LayoutSuperviewTarget)
     -> ItemToItemLayoutConstraint<AnchorType> {
         
         return to(target, anchor)
@@ -63,7 +63,7 @@ extension PartialLayoutConstraint
 where AnchorType == LayoutDimensionAnchor {
     
     @discardableResult
-    func to(_ constant: CGFloat)
+    public func to(_ constant: CGFloat)
     -> ItemToConstantLayoutConstraint {
         
         return ItemToConstantLayoutConstraint(
@@ -75,19 +75,19 @@ where AnchorType == LayoutDimensionAnchor {
 
 // MARK: - Partial Composite Constraint
 
-class PartialLayoutCompositeConstraint
+public class PartialLayoutCompositeConstraint
 <ItemType: LayoutConstrainable, AnchorType: LayoutCompositeAnchor> {
 
     let item: ItemType
     let anchor: AnchorType
     
-    init(item: ItemType, anchor: AnchorType) {
+    internal init(item: ItemType, anchor: AnchorType) {
         self.item = item
         self.anchor = anchor
     }
     
     @discardableResult
-    func to(_ c: LayoutConstrainable)
+    public func to(_ c: LayoutConstrainable)
     -> ItemToItemLayoutCompositeConstraint<AnchorType> {
         
         return ItemToItemLayoutCompositeConstraint(
@@ -101,7 +101,7 @@ extension PartialLayoutCompositeConstraint
 where ItemType: UIView {
     
     @discardableResult
-    func to(_ target: LayoutSuperviewTarget)
+    public func to(_ target: LayoutSuperviewTarget)
     -> ItemToItemLayoutCompositeConstraint<AnchorType> {
         
         let c = constrainable(for: item, target: target)
@@ -114,7 +114,7 @@ extension PartialLayoutCompositeConstraint
 where AnchorType == LayoutCompositeSizeAnchor {
     
     @discardableResult
-    func to(width: CGFloat, height: CGFloat)
+    public func to(width: CGFloat, height: CGFloat)
     -> ItemToSizeLayoutCompositeConstraint {
         
         return ItemToSizeLayoutCompositeConstraint(
@@ -123,7 +123,7 @@ where AnchorType == LayoutCompositeSizeAnchor {
     }
     
     @discardableResult
-    func to(_ size: CGSize)
+    public func to(_ size: CGSize)
     -> ItemToSizeLayoutCompositeConstraint {
         
         return to(width: size.width, height: size.height)
@@ -137,7 +137,7 @@ private func constrainable(for view: UIView, target: LayoutSuperviewTarget)
 -> LayoutConstrainable {
     
     guard let sv = view.superview else {
-        fatalError("Attempting to add constraint to null superview")
+        fatalError("Attempting to add constraint to nil superview")
     }
     
     switch target {

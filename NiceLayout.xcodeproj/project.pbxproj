@@ -48,12 +48,12 @@
 		23312A0D245CA24200701BF9 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				23312A0E245CA24200701BF9 /* Anchor.swift */,
-				23312A0F245CA24200701BF9 /* PartialConstraint.swift */,
 				23312A10245CA24200701BF9 /* Layout.swift */,
-				23312A11245CA24200701BF9 /* CompositeConstraint.swift */,
-				23312A12245CA24200701BF9 /* Constraint.swift */,
+				23312A0E245CA24200701BF9 /* Anchor.swift */,
 				23312A13245CA24200701BF9 /* Constrainable.swift */,
+				23312A0F245CA24200701BF9 /* PartialConstraint.swift */,
+				23312A12245CA24200701BF9 /* Constraint.swift */,
+				23312A11245CA24200701BF9 /* CompositeConstraint.swift */,
 				23312A14245CA24200701BF9 /* RawConstraint.swift */,
 			);
 			path = Source;

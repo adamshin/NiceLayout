@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - Constrainable
 
-protocol LayoutConstrainable {
+public protocol LayoutConstrainable {
     var leadingAnchor: NSLayoutXAxisAnchor { get }
     var trailingAnchor: NSLayoutXAxisAnchor { get }
     var leftAnchor: NSLayoutXAxisAnchor { get }
@@ -22,75 +22,79 @@ protocol LayoutConstrainable {
     var centerXAnchor: NSLayoutXAxisAnchor { get }
     var centerYAnchor: NSLayoutYAxisAnchor { get }
     
-    func prepareForLayout()
-}
-
-extension LayoutConstrainable {
-    func layout(_ block: (Self) -> Void) {
-        block(self)
-    }
+    func prepareForAutoLayout()
 }
 
 extension UIView: LayoutConstrainable {
-    func prepareForLayout() {
+    public func prepareForAutoLayout() {
         translatesAutoresizingMaskIntoConstraints = false
     }
 }
 
 extension UILayoutGuide: LayoutConstrainable {
-    func prepareForLayout() { }
+    public func prepareForAutoLayout() { }
 }
 
 // MARK: - Partial Constraint Creation
 
 extension LayoutConstrainable {
     
-    // MARK: Anchor Constraints
-    
-    func pin(_ anchor: LayoutXAxisAnchor)
+    public func pin(_ anchor: LayoutXAxisAnchor)
     -> PartialLayoutConstraint<Self, LayoutXAxisAnchor> {
-        return _pin(anchor)
+        return pinAnchor(anchor)
     }
     
-    func pin(_ anchor: LayoutYAxisAnchor)
+    public func pin(_ anchor: LayoutYAxisAnchor)
     -> PartialLayoutConstraint<Self, LayoutYAxisAnchor> {
-        return _pin(anchor)
+        return pinAnchor(anchor)
     }
     
-    func pin(_ anchor: LayoutDimensionAnchor)
+    public func pin(_ anchor: LayoutDimensionAnchor)
     -> PartialLayoutConstraint<Self, LayoutDimensionAnchor> {
-        return _pin(anchor)
+        return pinAnchor(anchor)
     }
     
-    func pin(_ anchor: LayoutCompositeEdgeAnchor)
+    public func pin(_ anchor: LayoutCompositeEdgeAnchor)
     -> PartialLayoutCompositeConstraint<Self, LayoutCompositeEdgeAnchor> {
-        return _pin(anchor)
+        return pinCompositeAnchor(anchor)
     }
     
-    func pin(_ anchor: LayoutCompositeCenterAnchor)
+    public func pin(_ anchor: LayoutCompositeCenterAnchor)
     -> PartialLayoutCompositeConstraint<Self, LayoutCompositeCenterAnchor> {
-        return _pin(anchor)
+        return pinCompositeAnchor(anchor)
     }
     
-    func pin(_ anchor: LayoutCompositeSizeAnchor)
+    public func pin(_ anchor: LayoutCompositeSizeAnchor)
     -> PartialLayoutCompositeConstraint<Self, LayoutCompositeSizeAnchor> {
-        return _pin(anchor)
+        return pinCompositeAnchor(anchor)
     }
     
-    // MARK: Private Methods
+    // MARK: Internal Methods
     
-    private func _pin<AnchorType: LayoutAnchor>(_ anchor: AnchorType)
+    private func pinAnchor<AnchorType: LayoutAnchor>
+        (_ anchor: AnchorType)
     -> PartialLayoutConstraint<Self, AnchorType> {
         
-        prepareForLayout()
+        prepareForAutoLayout()
         return PartialLayoutConstraint(item: self, anchor: anchor)
     }
     
-    func _pin<AnchorType: LayoutCompositeAnchor>(_ anchor: AnchorType)
+    private func pinCompositeAnchor<AnchorType: LayoutCompositeAnchor>
+        (_ anchor: AnchorType)
     -> PartialLayoutCompositeConstraint<Self, AnchorType> {
         
-        prepareForLayout()
+        prepareForAutoLayout()
         return PartialLayoutCompositeConstraint(item: self, anchor: anchor)
+    }
+    
+}
+
+// MARK: - Convenience Block Layout
+
+extension LayoutConstrainable {
+    
+    public func layout(_ block: (Self) -> Void) {
+        block(self)
     }
     
 }

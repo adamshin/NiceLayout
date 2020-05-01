@@ -8,13 +8,13 @@
 
 import UIKit
 
-enum LayoutRelation {
+public enum LayoutRelation {
     case equal
     case lessOrEqual
     case greaterOrEqual
 }
 
-enum LayoutSuperviewTarget {
+public enum LayoutSuperviewTarget {
     case `super`
     case safeArea
     case margins

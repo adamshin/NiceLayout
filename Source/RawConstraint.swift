@@ -8,15 +8,17 @@
 
 import UIKit
 
-// MARK: Raw Constraint
+// MARK: - Raw Constraint
 
-class RawConstraint {
+public class RawConstraint {
     
     var systemConstraint: NSLayoutConstraint
     
     // MARK: Initializers
     
-    init(item: LayoutConstrainable, attribute: NSLayoutConstraint.Attribute,
+    internal init(
+        item: LayoutConstrainable,
+        attribute: NSLayoutConstraint.Attribute,
         constant: CGFloat) {
         
         systemConstraint = NSLayoutConstraint(
@@ -31,8 +33,11 @@ class RawConstraint {
         systemConstraint.isActive = true
     }
     
-    init(item1: LayoutConstrainable, attribute1: NSLayoutConstraint.Attribute,
-        item2: LayoutConstrainable, attribute2: NSLayoutConstraint.Attribute) {
+    internal init(
+        item1: LayoutConstrainable,
+        attribute1: NSLayoutConstraint.Attribute,
+        item2: LayoutConstrainable,
+        attribute2: NSLayoutConstraint.Attribute) {
         
         systemConstraint = NSLayoutConstraint(
             item: item1,
@@ -48,7 +53,7 @@ class RawConstraint {
     
     // MARK: Constraint Modification
     
-    func setRelation(_ relation: LayoutRelation) {
+    internal func setRelation(_ relation: LayoutRelation) {
         let systemRelation: NSLayoutConstraint.Relation = {
             switch relation {
             case .equal: return .equal
@@ -64,7 +69,7 @@ class RawConstraint {
         replaceSystemConstraint(c)
     }
     
-    func setMultiplier(_ multiplier: CGFloat) {
+    internal func setMultiplier(_ multiplier: CGFloat) {
         let c = NSLayoutConstraint.create(
             from: systemConstraint,
             multiplier: multiplier)
@@ -72,15 +77,15 @@ class RawConstraint {
         replaceSystemConstraint(c)
     }
     
-    func setPriority(_ priority: UILayoutPriority) {
+    internal func setPriority(_ priority: UILayoutPriority) {
         systemConstraint.priority = priority
     }
     
-    func setConstant(_ constant: CGFloat) {
+    internal func setConstant(_ constant: CGFloat) {
         systemConstraint.constant = constant
     }
     
-    func setInset(_ inset: CGFloat) {
+    internal func setInset(_ inset: CGFloat) {
         let coefficient: CGFloat = {
             switch systemConstraint.firstAttribute {
             case .leading, .left, .top: return 1
@@ -104,7 +109,7 @@ class RawConstraint {
     
 }
 
-// MARK: Extensions
+// MARK: - NSLayoutConstraint Extension
 
 private extension NSLayoutConstraint {
     

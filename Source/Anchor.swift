@@ -10,26 +10,26 @@ import UIKit
 
 // MARK: - Anchor Protocols
 
-protocol LayoutAnchor {
+public protocol LayoutAnchor {
     var attribute: NSLayoutConstraint.Attribute { get }
 }
 
-protocol LayoutEdgeAnchor: LayoutAnchor { }
-
-protocol LayoutCompositeAnchor {
+public protocol LayoutCompositeAnchor {
     var attributes: [NSLayoutConstraint.Attribute] { get }
 }
 
 // MARK: - Anchors
 
-enum LayoutXAxisAnchor: LayoutEdgeAnchor {
+public protocol LayoutEdgeAnchor: LayoutAnchor { }
+
+public enum LayoutXAxisAnchor: LayoutEdgeAnchor {
     case leading
     case trailing
     case left
     case right
     case centerX
     
-    var attribute: NSLayoutConstraint.Attribute {
+    public var attribute: NSLayoutConstraint.Attribute {
         switch self {
         case .leading: return .leading
         case .trailing: return .trailing
@@ -40,12 +40,12 @@ enum LayoutXAxisAnchor: LayoutEdgeAnchor {
     }
 }
 
-enum LayoutYAxisAnchor: LayoutEdgeAnchor {
+public enum LayoutYAxisAnchor: LayoutEdgeAnchor {
     case top
     case bottom
     case centerY
     
-    var attribute: NSLayoutConstraint.Attribute {
+    public var attribute: NSLayoutConstraint.Attribute {
         switch self {
         case .top: return .top
         case .bottom: return .bottom
@@ -54,11 +54,11 @@ enum LayoutYAxisAnchor: LayoutEdgeAnchor {
     }
 }
 
-enum LayoutDimensionAnchor: LayoutAnchor {
+public enum LayoutDimensionAnchor: LayoutAnchor {
     case width
     case height
     
-    var attribute: NSLayoutConstraint.Attribute {
+    public var attribute: NSLayoutConstraint.Attribute {
         switch self {
         case .width: return .width
         case .height: return .height
@@ -68,12 +68,12 @@ enum LayoutDimensionAnchor: LayoutAnchor {
 
 // MARK: - Composite Anchors
 
-enum LayoutCompositeEdgeAnchor: LayoutCompositeAnchor {
+public enum LayoutCompositeEdgeAnchor: LayoutCompositeAnchor {
     case edges
     case hEdges
     case vEdges
     
-    var attributes: [NSLayoutConstraint.Attribute] {
+    public var attributes: [NSLayoutConstraint.Attribute] {
         switch self {
         case .edges: return [.leading, .trailing, .top, .bottom]
         case .hEdges: return [.leading, .trailing]
@@ -82,20 +82,20 @@ enum LayoutCompositeEdgeAnchor: LayoutCompositeAnchor {
     }
 }
 
-enum LayoutCompositeCenterAnchor: LayoutCompositeAnchor {
+public enum LayoutCompositeCenterAnchor: LayoutCompositeAnchor {
     case center
     
-    var attributes: [NSLayoutConstraint.Attribute] {
+    public var attributes: [NSLayoutConstraint.Attribute] {
         switch self {
         case .center: return [.centerX, .centerY]
         }
     }
 }
 
-enum LayoutCompositeSizeAnchor: LayoutCompositeAnchor {
+public enum LayoutCompositeSizeAnchor: LayoutCompositeAnchor {
     case size
     
-    var attributes: [NSLayoutConstraint.Attribute] {
+    public var attributes: [NSLayoutConstraint.Attribute] {
         switch self {
         case .size: return [.width, .height]
         }

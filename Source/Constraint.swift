@@ -8,45 +8,45 @@
 
 import UIKit
 
-// MARK: Layout Constraint
+// MARK: - Layout Constraint
 
-protocol LayoutConstraint {
+public protocol LayoutConstraint {
     var rawConstraint: RawConstraint { get }
 }
 
 extension LayoutConstraint {
     
-    var constraint: NSLayoutConstraint {
+    public var constraint: NSLayoutConstraint {
         rawConstraint.systemConstraint
     }
     
     @discardableResult
-    func relation(_ relation: LayoutRelation) -> Self {
+    public func relation(_ relation: LayoutRelation) -> Self {
         rawConstraint.setRelation(relation)
         return self
     }
     
     @discardableResult
-    func priority(_ priority: UILayoutPriority) -> Self {
+    public func priority(_ priority: UILayoutPriority) -> Self {
         rawConstraint.setPriority(priority)
         return self
     }
     
     @discardableResult
-    func priority(_ rawValue: Float) -> Self {
+    public func priority(_ rawValue: Float) -> Self {
         return priority(UILayoutPriority(rawValue: rawValue))
     }
     
 }
 
-// MARK: Item to Constant Layout Constraint
+// MARK: - Item to Constant Constraint
 
-struct ItemToConstantLayoutConstraint:
+public struct ItemToConstantLayoutConstraint:
 LayoutConstraint {
     
-    let rawConstraint: RawConstraint
+    public let rawConstraint: RawConstraint
     
-    init(item: LayoutConstrainable, anchor: LayoutAnchor,
+    internal init(item: LayoutConstrainable, anchor: LayoutAnchor,
         constant: CGFloat) {
         
         rawConstraint = RawConstraint(
@@ -56,14 +56,14 @@ LayoutConstraint {
     
 }
 
-// MARK: Item to Item Layout Constraint
+// MARK: - Item to Item Constraint
 
-struct ItemToItemLayoutConstraint<AnchorType: LayoutAnchor>:
+public struct ItemToItemLayoutConstraint<AnchorType: LayoutAnchor>:
 LayoutConstraint {
     
-    let rawConstraint: RawConstraint
+    public let rawConstraint: RawConstraint
     
-    init(item1: LayoutConstrainable, anchor1: AnchorType,
+    internal init(item1: LayoutConstrainable, anchor1: AnchorType,
         item2: LayoutConstrainable, anchor2: AnchorType) {
         
         rawConstraint = RawConstraint(
@@ -76,7 +76,7 @@ LayoutConstraint {
 extension ItemToItemLayoutConstraint {
     
     @discardableResult
-    func offset(_ offset: CGFloat) -> Self {
+    public func offset(_ offset: CGFloat) -> Self {
         rawConstraint.setConstant(offset)
         return self
     }
@@ -87,7 +87,7 @@ extension ItemToItemLayoutConstraint
 where AnchorType: LayoutEdgeAnchor {
     
     @discardableResult
-    func inset(_ inset: CGFloat) -> Self {
+    public func inset(_ inset: CGFloat) -> Self {
         rawConstraint.setInset(inset)
         return self
     }
@@ -98,7 +98,7 @@ extension ItemToItemLayoutConstraint
 where AnchorType == LayoutDimensionAnchor {
     
     @discardableResult
-    func multiplier(_ multiplier: CGFloat) -> Self {
+    public func multiplier(_ multiplier: CGFloat) -> Self {
         rawConstraint.setMultiplier(multiplier)
         return self
     }
