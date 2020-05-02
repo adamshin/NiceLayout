@@ -54,7 +54,7 @@ public enum LayoutYAxisAnchor: LayoutEdgeAnchor {
     }
 }
 
-public enum LayoutDimensionAnchor: LayoutAnchor {
+public enum LayoutSizeAnchor: LayoutAnchor {
     case width
     case height
     
@@ -73,11 +73,31 @@ public enum LayoutCompositeEdgeAnchor: LayoutCompositeAnchor {
     case hEdges
     case vEdges
     
+    case topLeading
+    case topTrailing
+    case bottomLeading
+    case bottomTrailing
+    
+    case topLeft
+    case topRight
+    case bottomLeft
+    case bottomRight
+    
     public var attributes: [NSLayoutConstraint.Attribute] {
         switch self {
         case .edges: return [.leading, .trailing, .top, .bottom]
         case .hEdges: return [.leading, .trailing]
         case .vEdges: return [.top, .bottom]
+        
+        case .topLeading: return [.top, .leading]
+        case .topTrailing: return [.top, .trailing]
+        case .bottomLeading: return [.bottom, .leading]
+        case .bottomTrailing: return [.bottom, .trailing]
+        
+        case .topLeft: return [.top, .left]
+        case .topRight: return [.top, .right]
+        case .bottomLeft: return [.bottom, .left]
+        case .bottomRight: return [.bottom, .right]
         }
     }
 }

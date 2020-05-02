@@ -49,8 +49,8 @@ extension LayoutConstrainable {
         return pinAnchor(anchor)
     }
     
-    public func pin(_ anchor: LayoutDimensionAnchor)
-    -> PartialLayoutConstraint<Self, LayoutDimensionAnchor> {
+    public func pin(_ anchor: LayoutSizeAnchor)
+    -> PartialLayoutConstraint<Self, LayoutSizeAnchor> {
         return pinAnchor(anchor)
     }
     

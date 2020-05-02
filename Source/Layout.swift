@@ -8,15 +8,34 @@
 
 import UIKit
 
-public enum LayoutRelation {
-    case equal
-    case lessOrEqual
-    case greaterOrEqual
-}
+// MARK: - Superview Target
 
 public enum LayoutSuperviewTarget {
     case `super`
     case margins
     case readableContent
     @available(iOS 11.0, *) case safeArea
+}
+
+// MARK: - Relation Operators
+
+public struct LayoutRelationProxy { }
+
+public typealias LayoutRelationOperator =
+    (LayoutRelationProxy, LayoutRelationProxy)
+    -> NSLayoutConstraint.Relation
+
+public func == (a: LayoutRelationProxy, b: LayoutRelationProxy)
+-> NSLayoutConstraint.Relation {
+    return .equal
+}
+
+public func <= (a: LayoutRelationProxy, b: LayoutRelationProxy)
+-> NSLayoutConstraint.Relation {
+    return .lessThanOrEqual
+}
+
+public func >= (a: LayoutRelationProxy, b: LayoutRelationProxy)
+-> NSLayoutConstraint.Relation {
+    return .greaterThanOrEqual
 }

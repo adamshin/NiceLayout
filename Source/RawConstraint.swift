@@ -53,18 +53,10 @@ public class RawConstraint {
     
     // MARK: Constraint Modification
     
-    internal func setRelation(_ relation: LayoutRelation) {
-        let systemRelation: NSLayoutConstraint.Relation = {
-            switch relation {
-            case .equal: return .equal
-            case .lessOrEqual: return .lessThanOrEqual
-            case .greaterOrEqual: return .greaterThanOrEqual
-            }
-        }()
-        
+    internal func setRelation(_ relation: NSLayoutConstraint.Relation) {
         let c = NSLayoutConstraint.create(
             from: systemConstraint,
-            relation: systemRelation)
+            relation: relation)
         
         replaceSystemConstraint(c)
     }

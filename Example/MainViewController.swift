@@ -21,7 +21,8 @@ class MainViewController: UIViewController {
             $0.pin(.centerX).to(.super)
             $0.pin(.width).to(.super).multiplier(0.5)
             $0.pin(.top).to(.super).inset(140)
-            $0.pin(.height).to(100).priority(900)
+            $0.pin(.height).to(100).priority(250)
+            $0.pin(.height).to(120).relation(>=)
         }
         
         let view2 = UIView()
@@ -53,7 +54,7 @@ class MainViewController: UIViewController {
         view5.layout {
             $0.pin(.leading).to(view2, .trailing).offset(20)
             $0.pin(.vEdges).to(view2)
-            $0.pin(.width).to($0, .height).multiplier(1)
+            $0.pin(.width).to($0, .height).constant(-10).multiplier(1)
         }
     }
     

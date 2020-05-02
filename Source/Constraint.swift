@@ -21,9 +21,16 @@ extension LayoutConstraint {
     }
     
     @discardableResult
-    public func relation(_ relation: LayoutRelation) -> Self {
+    public func relation(_ relation: NSLayoutConstraint.Relation) -> Self {
         rawConstraint.setRelation(relation)
         return self
+    }
+    
+    @discardableResult
+    public func relation(_ op: LayoutRelationOperator)
+    -> Self {
+        let value = op(LayoutRelationProxy(), LayoutRelationProxy())
+        return relation(value)
     }
     
     @discardableResult
@@ -73,18 +80,14 @@ LayoutConstraint {
     
 }
 
-extension ItemToItemLayoutConstraint {
+extension ItemToItemLayoutConstraint
+where AnchorType: LayoutEdgeAnchor {
     
     @discardableResult
     public func offset(_ offset: CGFloat) -> Self {
         rawConstraint.setConstant(offset)
         return self
     }
-    
-}
-
-extension ItemToItemLayoutConstraint
-where AnchorType: LayoutEdgeAnchor {
     
     @discardableResult
     public func inset(_ inset: CGFloat) -> Self {
@@ -95,7 +98,13 @@ where AnchorType: LayoutEdgeAnchor {
 }
 
 extension ItemToItemLayoutConstraint
-where AnchorType == LayoutDimensionAnchor {
+where AnchorType == LayoutSizeAnchor {
+    
+    @discardableResult
+    public func constant(_ constant: CGFloat) -> Self {
+        rawConstraint.setConstant(constant)
+        return self
+    }
     
     @discardableResult
     public func multiplier(_ multiplier: CGFloat) -> Self {

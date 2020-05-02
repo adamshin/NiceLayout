@@ -60,7 +60,7 @@ where ItemType: UIView {
 }
 
 extension PartialLayoutConstraint
-where AnchorType == LayoutDimensionAnchor {
+where AnchorType == LayoutSizeAnchor {
     
     @discardableResult
     public func to(_ constant: CGFloat)
