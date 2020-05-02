@@ -20,9 +20,22 @@ button.pin(.top).to(label, .bottom)
 button.pin(.height).to(44)
 ```
 
-# Usage
+## Installation
 
-## Adding constraints
+### CocoaPods
+
+To integrate NiceLayout into your Xcode project using CocoaPods, specify it in your `Podfile`:
+```ruby
+pod 'NiceLayout', '~> 0.0.1`
+```
+
+### Manually
+
+To integrate NiceLayout into your Xcode project manually, copy the contents of the `Source` folder into your project.
+
+## Usage
+
+### Adding constraints
 The expression for adding a constraint takes the basic form of `view.pin(...).to(...)`. 
 
 ```swift
@@ -64,7 +77,7 @@ view1.pin(.size).to(width: 60, height: 80)
 
 NiceLayout automatically sets `translatesAutoresizingMaskIntoConstraints` to false for the view on the left-hand side of the expression.
 
-## Superview constraints
+### Superview constraints
 When constraining a view to its superview, the shorthand value `.super` can be used as the target.
 
 ```swift
@@ -81,7 +94,7 @@ textView.pin(.top).to(.safeArea)
 textView.pin(.hEdges).to(.margins)
 ```
 
-## Constraint options
+### Constraint options
 
 The multiplier, priority, and relation of constraints can be set with additional method calls.
 
@@ -94,7 +107,7 @@ view1.pin(.bottom).to(view2).inset(24).relation(.lessOrEqual)
 
 ```
 
-## Accessing raw NSLayoutConstraints
+### Accessing raw NSLayoutConstraints
 
 To access the underlying `NSLayoutConstraints` created by NiceLayout, use the `constraint` or `constraints` property on a constraint expression. These constraints may then be updated or deactivated as usual.
 
@@ -103,5 +116,3 @@ let widthConstraint: NSLayoutConstraint = view1.pin(.width).to(120).constraint
 
 let edgeConstraints: [NSLayoutConstraint] = view1.pin(.edges).to(view2).constraints
 ```
-
-
